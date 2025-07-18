@@ -5,8 +5,8 @@ from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
 import streamlit.components.v1 as components
 
 # --- Load login password from secrets ---
-APP_PASSWORD = st.secrets["APP_PASSWORD"]
-
+# APP_PASSWORD = st.secrets["APP_PASSWORD"]
+APP_PASSWORD = "agrowala"
 # --- Check login ---
 def check_login():
     st.title("🔒 لاگ ان درکار ہے")
@@ -30,16 +30,25 @@ if not check_login():
 # --- Database connection using pymssql ---
 def get_connection():
     try:
+        # conn = pyodbc.connect(
+        #     f"DRIVER={{ODBC Driver 13 for SQL Server}};"
+        #     f"SERVER={st.secrets['DB_SERVER']};"
+        #     f"DATABASE={st.secrets['DB_NAME']};"
+        #     f"UID={st.secrets['DB_USER']};"
+        #     f"PWD={st.secrets['DB_PASSWORD']};"
+        #     "TrustServerCertificate=yes;"
+        #     "Encrypt=yes;",
+        #     Timeout=30
+        # )
         conn = pyodbc.connect(
-            f"DRIVER={{ODBC Driver 13 for SQL Server}};"
-            f"SERVER={st.secrets['DB_SERVER']};"
-            f"DATABASE={st.secrets['DB_NAME']};"
-            f"UID={st.secrets['DB_USER']};"
-            f"PWD={st.secrets['DB_PASSWORD']};"
-            "TrustServerCertificate=yes;"
-            "Encrypt=yes;",
-            Timeout=30
-        )
+             'DRIVER={ODBC Driver 13 for SQL Server};'
+             'SERVER=182.184.63.27,1434;'
+             'DATABASE=Agriculture Management;UID=sa;PWD=Maxicom777;'
+             'TrustServerCertificate=yes;'
+             'Encrypt=no;'
+             'Connection Timeout=30;'
+            )
+
         return conn
     except Exception as e:
         st.error("❌ ڈیٹا بیس کنکشن میں مسئلہ ہے۔")
