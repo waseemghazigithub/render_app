@@ -1,0 +1,6 @@
+curl
+gnupg
+unixodbc
+unixodbc-dev
+apt-transport-https
+software-properties-common
