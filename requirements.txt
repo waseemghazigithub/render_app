@@ -1,5 +1,0 @@
-streamlit
-pyodbc
-pandas
-num2words
-streamlit-aggrid
